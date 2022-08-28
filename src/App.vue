@@ -1,55 +1,14 @@
-<!-- THIS set of code will hide and unhide the text -->
+<!-- This set of code is a simple example of todo app -->
 <!-- <template>
   <div>
-      <button @click='show = !show'>Show/Hide</button>
-      <span v-show="show">Click to hide this text</span>
-  </div>
-</template>
-<script>
-export default {
-  name: 'toggle-button',
-   data:  function(){
-    return {
-      show: true
-    }
-   }
-}
-</script> -->
+      <h1 v-if="1==0">True statement</h1>
+      <h1 v-else-if="10>6">Else True statement</h1>
+      <h1 v-else>False statement</h1>
 
-<!-- 
-This set of code is to check if the age is more than 18 then enable the button
-<template>
-  <div>
-      <input v-model.number="age" type="number" placeholder="Age" />
-      <button :disabled="underAge" id="btn" onclick="alert('Buy stuff')">Buy stuff</button>
-  </div>
-</template>
-<script>
-export default {
-  name: 'conditional-disabling',
-   data: function () {
-    return {
-      age: null
-    };
-   },
-  computed: {
-    underAge: function () {
-      return this.age < 18;
-    }
-  }
-}
-</script> -->
 
-<!-- This set of code is a simple example of todo app -->
-<template>
-  <div>
-      <input v-model="item" type="text" placeholder="item" />
-      <button @click="addItem">Add</button>
-      <ul>
-         <li v-for="todo in todos" :key="todo">
-           {{ todo }}
-         </li>
-      </ul>
+
+
+      
   </div>
 </template>
 <script>
@@ -68,8 +27,52 @@ export default {
      }
    }
 }
-</script>
+</script> -->
 
+
+<template>
+  <div class="container">
+      <h3 class="p-3 text-center">Vue 3 - Display a list of items with v-for</h3>
+      <table class="table table-striped table-bordered">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr v-for="user in users" :key="user.id">
+                  <td>{{user.firstName}} {{user.lastName}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.role}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>    
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  name: 'App',
+  setup() {
+      // make users variable reactive with the ref() function
+      const users = ref([
+          { firstName: 'Frank', lastName: 'Murphy', email: 'frank.murphy@test.com', role: 'User' },
+          { firstName: 'Vic', lastName: 'Reynolds', email: 'vic.reynolds@test.com', role: 'Admin' },
+          { firstName: 'Gina', lastName: 'Jabowski', email: 'gina.jabowski@test.com', role: 'Admin' },
+          { firstName: 'Jessi', lastName: 'Glaser', email: 'jessi.glaser@test.com', role: 'User' },
+          { firstName: 'Jay', lastName: 'Bilzerian', email: 'jay.bilzerian@test.com', role: 'User' }
+      ]);
+
+      return {
+          users
+      };
+  }
+}
+</script>
 
 
 <style>
