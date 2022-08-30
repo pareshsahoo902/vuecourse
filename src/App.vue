@@ -1,35 +1,25 @@
+<!-- If the volume reaches 16 give a warning -->
 <template>
   <div>
-  <Home v-bind:title="title" />
-  
-  <button @click="showPopup = true">Open Popup</button>
-
-  <Popup v-show="showPopup" 
-  @submit="submitPopup" 
-  @closePopup="showPopup = false"
-  />
+    <h2>Volume Tracker (0 - 20)</h2>
+    <h3>Current Volume: {{volume}}</h3>
+    <button @click="volume = volume + 2" >Increase</button>
+    <button  @click="volume = volume - 2" >Decrease</button>
 </div>
 </template>
 
 <script>
-import Home from './components/Home.vue';
-import Popup from './components/Popup.vue';
+
 export default {
   name: 'App',
-  components: {
-    Home,
-    Popup
-},
   data(){
     return{
-      title:"MainPage",
-      showPopup:false
+      volume : 0,
     }
   },
-  methods:{
-    submitPopup:function(text){
-      this.title = text;
-      this.showPopup = false;
+  watch:{
+    volume(newVal,oldVal){
+      newVal == 16  && newVal > oldVal?alert('High Volume Warning!'):null
     }
   }
 }
