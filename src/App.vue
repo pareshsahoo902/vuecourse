@@ -1,18 +1,16 @@
 <!-- If the volume reaches 16 give a warning -->
 <template>
   <div>
-  <ClickCounter />
-  <HoverCounter />
+    <PostList />
 </div>
 </template>
 
 <script>
-import ClickCounter from './components/ClickCounter.vue';
-import HoverCounter from './components/HoverCounter.vue';
+import PostList from './components/PostList.vue';
 
 export default {
     name: "App",
-    components: { ClickCounter, HoverCounter }
+    components: { PostList }
 }
 </script>
 <style scoped>
