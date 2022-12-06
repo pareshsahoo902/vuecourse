@@ -3,23 +3,43 @@ import {createStore } from 'vuex';
 export default createStore(
     {
         state:{
-            counter : 0
+            cartList: [],
+            wishList: [
+                {id: 1, name: 'IPod',price:300, registered: false},
+                {id: 2, name: 'Watch-Apple',price:350, registered: false},
+                {id: 3, name: 'Iphone14',price:920, registered: false},
+                {id: 4, name: 'Mac-Mini',price:799, registered: false}
+            ]
         },
         getters:{
-            times2(state){
-                return state.counter * 2;
+            wishlistItems(state){
+                return state.wishList.filter(user=>{
+                    return !user.registered;
+                })
+            },
+            cartItems(state){
+                return state.cartList;
+            },
+            totalCartItems(state){
+                return state.cartList.length;
             }
+            
         },
         mutations:{
-            setCounter(state, value){
-                state.counter = value;
-            }
-        },
-        actions:{
+            addToCart(state,item){
+                const newItem = state.wishList.find(e => e.id == item.id);
 
-        },
-        modules:{
+                newItem.registered = true;
+                state.cartList.push(newItem);
+            },
+            removeFromCart(state,item){
+                const currentItem = state.wishList.find(e => {
+                    return e.id == item.id;
+                });
+                currentItem.registered = false;
+                state.cartList.splice(state.cartList.indexOf(item), 1);
             
+            }
         }
     }
 )

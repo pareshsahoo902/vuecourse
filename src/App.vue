@@ -1,32 +1,29 @@
 <template>
-  <div>
-  <OptCounter />
-  <ComCounter />
-</div>
+  <div id="app">
+    <app-registration ></app-registration>
+    <app-registrations ></app-registrations>
+  </div>
 </template>
 
 <script>
-import OptCounter from './components/OptCounter.vue';
-import ComCounter from './components/ComCounter.vue';
-
+  import Registration from './components/Registration.vue';
+  import Registrations from './components/Registrations.vue';
 export default {
-    name: "App",
-    components: { OptCounter, ComCounter }
+   
+    components: {
+        appRegistration: Registration,
+        appRegistrations: Registrations
+    }
 }
 </script>
-<style scoped>
+
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  }
-.centerDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 </style>
